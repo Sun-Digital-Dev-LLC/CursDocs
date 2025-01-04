@@ -6,7 +6,7 @@
     "node": ">=18.18.0"
   },
   "scripts": {
-    "build": "next build && rm -rf .next/cache",
+    "build": "next build",
     "dev": "next dev",
     "start": "next start",
     "postinstall": "fumadocs-mdx"
