@@ -1,7 +1,8 @@
 {
     "title": "主頁",
     "pages": [
-        "---Guide---",
-        "guide/terms-of-service"
+        "---相關條款---",
+        "guide/terms-of-service",
+        "guide/privacy-policy"
     ]
 }
