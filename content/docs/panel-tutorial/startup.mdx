@@ -1,0 +1,48 @@
+---
+title: StartUp 設定
+description: 關於伺服器、機器人需要安裝套件或金鑰等相關設定
+tags: Tutorial
+---
+<img src="https://imgur.com/PJy0zld.png" />
+
+## 注意事項
+- 請確保所有設定值正確無誤，以避免伺服器啟動失敗。
+- 如果您對設定有任何疑問，或需要進一步的操作指引，請隨時聯繫我們的客服團隊。
+<Callout title="溫馨提醒" type="warn">以下使用 FiveM 伺服器做為範例參考</Callout>
+---
+
+## 相關變數設定
+
+### FIVEM LICENSE (FiveM 金鑰)
+- **設定值**：`cfxk_1a2b3c4d5f6g7h81`
+- **說明**：啟動服務所需的授權金鑰。請至 [FiveM Keymaster](https://keymaster.fivem.net/) 取得您的金鑰。
+
+### SERVER HOSTNAME（伺服器名稱設定）
+- **設定值**：`FiveM Server!`
+- **說明**：設定此名稱將顯示在伺服器列表中，提供玩家識別並且可快速選擇加入。
+<Callout title="重要提示" type="warn">請務必在此處修改伺服器名稱，若在 `server.cfg` 中修改，名稱可能會被系統自動覆蓋。</Callout>
+
+### STEAM WEB API KEY (Steam API 金鑰)
+- **設定值**：`none`
+- **說明**：使用您的 Steam Web API 金鑰，或設置為 `none`。請至 [Steam API Key](https://steamcommunity.com/dev/apikey) 取得金鑰。
+
+### ENABLE TXADMIN (啟用 txAdmin)
+- **設定值**：`1` 啟用，`0` 停用（預設為 `0`）。
+- **說明**：啟用或停用 txAdmin 管理面板。
+
+### DOCKER IMAGE (Docker 映像)
+- **設定值**: `ghcr.io/parkervcp/yolks:debian`
+- **說明**: 使用的 Docker 映像檔。
+<Callout title="重要提示" type="error">此設定值為禁止調整，可無須理會此設定格。</Callout>
+
+### MAX PLAYERS (最大玩家數量)
+- **設定值**: `48`
+- **說明**: 設定 FiveM 伺服器的最大玩家數量。
+
+### FIVEM VERSION (FiveM 佈建版本)
+- **設定值**: `12255-c9b5328edc043260367cc73d23460e517822e28`
+- **說明**: 要安裝的 FiveM 版本。無效版本將使用預設版本。您可以在 [FiveM 版本列表](https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/) 取得最新版本。
+
+### TXADMIN PORT (txAdmin 網頁瀏覽端口)
+- **設定值**: `10011`
+- **說明**: txAdmin 管理面板的連接埠。

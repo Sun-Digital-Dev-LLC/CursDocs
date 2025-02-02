@@ -3,6 +3,10 @@
     "pages": [
         "---相關條款---",
         "guide/terms-of-service",
-        "guide/privacy-policy"
+        "guide/privacy-policy",
+        "---控制面板教學---",
+        "panel-tutorial/startup",
+        "panel-tutorial/settings",
+        "panel-tutorial/activity"
     ]
 }
