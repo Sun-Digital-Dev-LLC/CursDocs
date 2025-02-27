@@ -7,6 +7,8 @@
         "---控制面板教學---",
         "panel-tutorial/startup",
         "panel-tutorial/settings",
-        "panel-tutorial/activity"
+        "panel-tutorial/activity",
+        "---FiveM伺服器教學---",
+        "fivem-tutorial/txadmin"
     ]
 }
