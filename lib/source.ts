@@ -9,11 +9,20 @@ export interface SearchResult {
   description: string;
 }
 
+// Define a page tree item type
+export interface PageTreeItem {
+  name?: string;
+  url?: string;
+  description?: string;
+  items?: PageTreeItem[];
+  [key: string]: unknown;
+}
+
 // Extend the loader type to include our search method
 export interface SourceWithSearch {
-  pageTree: any[];
-  getPage: (slug?: string[]) => any;
-  generateParams: () => any;
+  pageTree: PageTreeItem[];
+  getPage: (slug?: string[]) => unknown;
+  generateParams: () => unknown;
   search: (query: string) => SearchResult[];
 }
 
@@ -25,7 +34,7 @@ const baseSource = loader({
 
 // Create and export the enhanced source object with search functionality
 export const source: SourceWithSearch = {
-  ...baseSource,
+  ...baseSource as unknown as SourceWithSearch,
   
   // Add a simple local search implementation
   search: function(query: string): SearchResult[] {
@@ -41,7 +50,7 @@ export const source: SourceWithSearch = {
 };
 
 // Helper function to search through the page tree
-function searchInPageTree(items: any[], query: string): SearchResult[] {
+function searchInPageTree(items: PageTreeItem[], query: string): SearchResult[] {
   const results: SearchResult[] = [];
   
   if (!items || !Array.isArray(items)) {
