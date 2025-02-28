@@ -6,12 +6,26 @@ const withMDX = createMDX();
 const config = {
   reactStrictMode: true,
   
-  // Add Cloudflare Pages specific configuration
-  // This will help reduce file sizes and avoid caching issues
+  // Set output to static export
+  output: 'export',
+  
+  // Disable image optimization for static export
+  images: {
+    unoptimized: true,
+  },
+  
+  // Properly configure static routes
+  // This ensures API routes work in static export mode
+  experimental: {
+    // This helps with static export of App Router
+    appDocumentPreloading: false,
+  },
+
+  // Optimize for Cloudflare Pages deployment
   webpack: (config, { dev, isServer }) => {
     // Only run in production and for client-side builds
     if (!dev && !isServer) {
-      // Set production optimizations
+      // Optimize production builds
       config.optimization = {
         ...config.optimization,
         minimize: true,
@@ -23,14 +37,6 @@ const config = {
     }
     
     return config;
-  },
-  
-  // Explicitly configure output settings for better Cloudflare compatibility
-  output: 'export', // Static export mode works well with Cloudflare Pages
-  
-  // Disable image optimization which can create large cache files
-  images: {
-    unoptimized: true,
   },
 };
 

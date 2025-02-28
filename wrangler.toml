@@ -1,20 +1,21 @@
-# Create a wrangler.toml file in your project's root directory with these settings:
+# Updated wrangler.toml configuration to match Cloudflare Pages requirements
 
 name = "cursdocs"
 compatibility_date = "2023-11-28"
 
+# Specify where the built output will be located
 [build]
 command = "pnpm run build"
 
+# This is the key property that Cloudflare Pages needs
 [build.upload]
 format = "directory"
+dir = "out"  # Next.js export output folder
 
-[site]
-bucket = ".next"
+# Exclude patterns
+[build.exclude]
+files = [".next/cache/**"]
 
-# Exclude cache files that are too large
-exclude = [".next/cache/**"]
-
-# Add Cloudflare specific environment variables if needed
+# Uncomment and use if needed for environment variables
 # [env.production]
 # MY_ENV_VARIABLE = "value"
