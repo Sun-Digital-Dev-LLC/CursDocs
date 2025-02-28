@@ -2,26 +2,47 @@ import { docs, meta } from '@/.source';
 import { createMDXSource } from 'fumadocs-mdx';
 import { loader } from 'fumadocs-core/source';
 
-export const source = loader({
+// Define a search result type
+export interface SearchResult {
+  title: string;
+  url: string;
+  description: string;
+}
+
+// Extend the loader type to include our search method
+export interface SourceWithSearch {
+  pageTree: any[];
+  getPage: (slug?: string[]) => any;
+  generateParams: () => any;
+  search: (query: string) => SearchResult[];
+}
+
+// Create the base source object
+const baseSource = loader({
   baseUrl: '/docs',
   source: createMDXSource(docs, meta),
 });
 
-// Add a simple local search implementation if the built-in one isn't working
-source.search = function(query) {
-  if (!query || typeof query !== 'string' || query.trim() === '') {
-    return [];
+// Create and export the enhanced source object with search functionality
+export const source: SourceWithSearch = {
+  ...baseSource,
+  
+  // Add a simple local search implementation
+  search: function(query: string): SearchResult[] {
+    if (!query || typeof query !== 'string' || query.trim() === '') {
+      return [];
+    }
+    
+    const normalizedQuery = query.toLowerCase().trim();
+    
+    // Search through the page tree
+    return searchInPageTree(this.pageTree, normalizedQuery);
   }
-  
-  const normalizedQuery = query.toLowerCase().trim();
-  
-  // Search through the page tree
-  return searchInPageTree(this.pageTree, normalizedQuery);
 };
 
 // Helper function to search through the page tree
-function searchInPageTree(items, query) {
-  const results = [];
+function searchInPageTree(items: any[], query: string): SearchResult[] {
+  const results: SearchResult[] = [];
   
   if (!items || !Array.isArray(items)) {
     return results;

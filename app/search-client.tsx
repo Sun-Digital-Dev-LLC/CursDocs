@@ -1,11 +1,15 @@
-// Client-side search implementation in app/search-client.tsx
-// This will replace the server-based search API
+// Fixed client-side search implementation
+'use client';
 
 import React, { useEffect, useState } from 'react';
-import { source } from '@/lib/source';
+import { source, SearchResult } from '@/lib/source';
 
-export function SearchClient({ query = '' }) {
-  const [results, setResults] = useState([]);
+interface SearchClientProps {
+  query?: string;
+}
+
+export function SearchClient({ query = '' }: SearchClientProps) {
+  const [results, setResults] = useState<SearchResult[]>([]);
 
   useEffect(() => {
     if (query.trim() === '') {
