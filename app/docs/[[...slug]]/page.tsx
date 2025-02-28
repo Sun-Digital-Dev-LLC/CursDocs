@@ -1,4 +1,4 @@
-import { source } from "@/lib/source";
+import { source, type Page } from "@/lib/source";
 import {
   DocsPage,
   DocsBody,
@@ -8,13 +8,12 @@ import {
 import { notFound } from "next/navigation";
 import { ImageZoom } from "fumadocs-ui/components/image-zoom";
 import defaultMdxComponents from "fumadocs-ui/mdx";
-import type { Page } from "fumadocs-mdx"; // 導入 Page 類型
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
   const params = await props.params;
-  const page = source.getPage(params.slug); // page 應為 Page 類型
+  const page = source.getPage(params.slug);
   if (!page) notFound();
 
   const MDX = page.data.body;
@@ -27,7 +26,7 @@ export default async function Page(props: {
         <MDX
           components={{
             ...defaultMdxComponents,
-            img: (props) => <ImageZoom {...props} />, // 移除 as any
+            img: (props) => <ImageZoom {...props} />,
           }}
         />
       </DocsBody>

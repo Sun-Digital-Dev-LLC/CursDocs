@@ -18,11 +18,22 @@ export interface PageTreeItem {
   [key: string]: unknown;
 }
 
+// Define the Page type
+export interface Page {
+  data: {
+    body: any; // MDX 內容
+    toc: any[]; // 目錄
+    full: boolean;
+    title: string;
+    description: string;
+  };
+}
+
 // Extend the loader type to include our search method
 export interface SourceWithSearch {
   pageTree: PageTreeItem[];
-  getPage: (slug?: string[]) => unknown;
-  generateParams: () => unknown;
+  getPage: (slug?: string[]) => Page | null;
+  generateParams: () => Array<{ slug?: string[] }>;
   search: (query: string) => SearchResult[];
 }
 
@@ -34,17 +45,13 @@ const baseSource = loader({
 
 // Create and export the enhanced source object with search functionality
 export const source: SourceWithSearch = {
-  ...baseSource as unknown as SourceWithSearch,
-  
-  // Add a simple local search implementation
+  ...baseSource as any,
   search: function(query: string): SearchResult[] {
     if (!query || typeof query !== 'string' || query.trim() === '') {
       return [];
     }
     
     const normalizedQuery = query.toLowerCase().trim();
-    
-    // Search through the page tree
     return searchInPageTree(this.pageTree, normalizedQuery);
   }
 };
@@ -58,7 +65,6 @@ function searchInPageTree(items: PageTreeItem[], query: string): SearchResult[] 
   }
   
   for (const item of items) {
-    // Check if this item matches
     if (item.name && typeof item.name === 'string' && item.name.toLowerCase().includes(query)) {
       if (item.url) {
         results.push({
@@ -69,7 +75,6 @@ function searchInPageTree(items: PageTreeItem[], query: string): SearchResult[] 
       }
     }
     
-    // Check if this item has a description that matches
     if (item.description && typeof item.description === 'string' && 
         item.description.toLowerCase().includes(query)) {
       if (item.url && !results.some(r => r.url === item.url)) {
@@ -81,7 +86,6 @@ function searchInPageTree(items: PageTreeItem[], query: string): SearchResult[] 
       }
     }
     
-    // Search in nested items
     if (item.items && Array.isArray(item.items)) {
       const nestedResults = searchInPageTree(item.items, query);
       results.push(...nestedResults);
