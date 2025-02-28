@@ -26,7 +26,10 @@ export default async function Page(props: {
         <MDX
           components={{
             ...defaultMdxComponents,
-            img: (props) => <ImageZoom {...props} />,
+            img: (props: { src: string; alt?: string; [key: string]: any }) => {
+              const { src, alt, ...restProps } = props;
+              return <ImageZoom src={src} alt={alt || ''} {...restProps} />;
+            },
           }}
         />
       </DocsBody>

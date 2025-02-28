@@ -1,7 +1,6 @@
 import { docs, meta } from '@/.source';
 import { createMDXSource } from 'fumadocs-mdx';
-import { loader } from 'fumadocs-core/source';
-
+import { loader, type PageTree } from 'fumadocs-core/source';
 // Define a search result type
 export interface SearchResult {
   title: string;
@@ -9,29 +8,31 @@ export interface SearchResult {
   description: string;
 }
 
-// Define a page tree item type
-export interface PageTreeItem {
-  name?: string;
-  url?: string;
-  description?: string;
-  items?: PageTreeItem[];
-  [key: string]: unknown;
-}
-
 // Define the Page type
 export interface Page {
   data: {
-    body: any; // MDX 內容
-    toc: any[]; // 目錄
+    body: any;
+    toc: any[];
     full: boolean;
     title: string;
     description: string;
   };
 }
 
+// Define a minimal PageTree type compatible with DocsLayout
+export interface PageTree {
+  name: string;
+  children: Array<{
+    name: string;
+    url?: string;
+    description?: string;
+    children?: Array<any>; // 遞迴結構
+  }>;
+}
+
 // Extend the loader type to include our search method
 export interface SourceWithSearch {
-  pageTree: PageTreeItem[];
+  pageTree: PageTree;
   getPage: (slug?: string[]) => Page | null;
   generateParams: () => Array<{ slug?: string[] }>;
   search: (query: string) => SearchResult[];
@@ -45,19 +46,24 @@ const baseSource = loader({
 
 // Create and export the enhanced source object with search functionality
 export const source: SourceWithSearch = {
-  ...baseSource as any,
+  pageTree: {
+    name: 'Documentation',
+    children: (baseSource.pageTree as any).children || baseSource.pageTree || [],
+  },
+  getPage: baseSource.getPage,
+  generateParams: baseSource.generateParams,
   search: function(query: string): SearchResult[] {
     if (!query || typeof query !== 'string' || query.trim() === '') {
       return [];
     }
     
     const normalizedQuery = query.toLowerCase().trim();
-    return searchInPageTree(this.pageTree, normalizedQuery);
+    return searchInPageTree(this.pageTree.children, normalizedQuery);
   }
 };
 
 // Helper function to search through the page tree
-function searchInPageTree(items: PageTreeItem[], query: string): SearchResult[] {
+function searchInPageTree(items: any[], query: string): SearchResult[] {
   const results: SearchResult[] = [];
   
   if (!items || !Array.isArray(items)) {
@@ -86,8 +92,9 @@ function searchInPageTree(items: PageTreeItem[], query: string): SearchResult[] 
       }
     }
     
-    if (item.items && Array.isArray(item.items)) {
-      const nestedResults = searchInPageTree(item.items, query);
+    const children = item.children || item.items || [];
+    if (Array.isArray(children)) {
+      const nestedResults = searchInPageTree(children, query);
       results.push(...nestedResults);
     }
   }
