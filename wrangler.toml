@@ -1,0 +1,20 @@
+# Create a wrangler.toml file in your project's root directory with these settings:
+
+name = "cursdocs"
+compatibility_date = "2023-11-28"
+
+[build]
+command = "pnpm run build"
+
+[build.upload]
+format = "directory"
+
+[site]
+bucket = ".next"
+
+# Exclude cache files that are too large
+exclude = [".next/cache/**"]
+
+# Add Cloudflare specific environment variables if needed
+# [env.production]
+# MY_ENV_VARIABLE = "value"

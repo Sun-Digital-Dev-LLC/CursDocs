@@ -1,3 +1,5 @@
+# 1. First, edit your .gitignore file to exclude the .next/cache directory:
+
 # deps
 /node_modules
 
@@ -8,6 +10,7 @@
 
 # test & build
 /coverage
+/.next/cache/    
 /.next/
 /out/
 /build
