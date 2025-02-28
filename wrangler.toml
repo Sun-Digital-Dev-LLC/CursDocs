@@ -1,13 +1,18 @@
-# Updated wrangler.toml for Cloudflare Pages with correct property names
+# Corrected wrangler.toml for Cloudflare Pages
 
-# This is a key property for Cloudflare Pages that was missing
-pages_build_output_dir = "out"
+name = "cursdocs"
 
 [build]
 command = "pnpm run build"
 
 [site]
 bucket = "out"
+
+[env.production]
+name = "cursdocs-production"
+
+[env.preview]
+name = "cursdocs-preview"
 
 [build.environment]
 NODE_VERSION = "18.18.0"
