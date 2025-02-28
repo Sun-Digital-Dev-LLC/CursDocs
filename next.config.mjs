@@ -14,8 +14,19 @@ const config = {
     unoptimized: true,
   },
   
+  // Configure static export - exclude API routes
+  exportPathMap: async function (defaultPathMap) {
+    // Remove any API routes from the path map
+    const filteredMap = { ...defaultPathMap };
+    Object.keys(filteredMap).forEach(path => {
+      if (path.startsWith('/api/')) {
+        delete filteredMap[path];
+      }
+    });
+    return filteredMap;
+  },
+  
   // Properly configure static routes
-  // This ensures API routes work in static export mode
   experimental: {
     // This helps with static export of App Router
     appDocumentPreloading: false,

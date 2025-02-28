@@ -1,21 +1,13 @@
-# Updated wrangler.toml configuration to match Cloudflare Pages requirements
+# Updated wrangler.toml for Cloudflare Pages with correct property names
 
-name = "cursdocs"
-compatibility_date = "2023-11-28"
+# This is a key property for Cloudflare Pages that was missing
+pages_build_output_dir = "out"
 
-# Specify where the built output will be located
 [build]
 command = "pnpm run build"
 
-# This is the key property that Cloudflare Pages needs
-[build.upload]
-format = "directory"
-dir = "out"  # Next.js export output folder
+[site]
+bucket = "out"
 
-# Exclude patterns
-[build.exclude]
-files = [".next/cache/**"]
-
-# Uncomment and use if needed for environment variables
-# [env.production]
-# MY_ENV_VARIABLE = "value"
+[build.environment]
+NODE_VERSION = "18.18.0"
