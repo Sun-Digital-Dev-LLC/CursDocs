@@ -3,9 +3,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { source } from '@/lib/source';
-import { createProcessor } from 'fumadocs-core/search/client';
-
-const searchProcessor = createProcessor(source.pageTree);
 
 export function SearchClient({ query = '' }) {
   const [results, setResults] = useState([]);
@@ -17,8 +14,14 @@ export function SearchClient({ query = '' }) {
     }
 
     // Process search on the client side
-    const searchResults = searchProcessor(query);
-    setResults(searchResults);
+    try {
+      // Use the search method from the source object
+      const searchResults = source.search(query);
+      setResults(searchResults);
+    } catch (error) {
+      console.error('Search error:', error);
+      setResults([]);
+    }
   }, [query]);
 
   return (

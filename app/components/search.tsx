@@ -1,6 +1,4 @@
-// If you have a search component in your UI, update it to use the client-side search
-// For example, in app/components/search.tsx or similar:
-
+// Updated search component with simplified integration
 'use client';
 
 import React, { useState } from 'react';
