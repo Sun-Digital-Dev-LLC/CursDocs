@@ -1,4 +1,4 @@
-// Create a client-side search implementation in app/search-client.tsx
+// Client-side search implementation in app/search-client.tsx
 // This will replace the server-based search API
 
 import React, { useEffect, useState } from 'react';
@@ -35,7 +35,7 @@ export function SearchClient({ query = '' }) {
           ))}
         </ul>
       ) : query.trim() !== '' ? (
-        <div className="text-gray-500">No results found for "{query}"</div>
+        <div className="text-gray-500">No results found for &quot;{query}&quot;</div>
       ) : null}
     </div>
   );
