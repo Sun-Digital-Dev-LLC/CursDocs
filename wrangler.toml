@@ -1,12 +1,12 @@
-# Corrected wrangler.toml for Cloudflare Pages
+# Cloudflare Pages configuration for Next.js static export
 
 name = "cursdocs"
 
 [build]
 command = "pnpm run build"
 
-[site]
-bucket = "out"
+# Specify the output directory for Pages
+pages_build_output_dir = "out"
 
 [env.production]
 name = "cursdocs-production"

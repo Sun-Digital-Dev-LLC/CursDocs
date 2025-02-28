@@ -14,13 +14,7 @@ const config = {
     unoptimized: true,
   },
   
-  // Properly configure static routes
-  experimental: {
-    // This helps with static export of App Router
-    appDocumentPreloading: false,
-  },
-
-  // Optimize for Cloudflare Pages deployment
+  // Add webpack configuration to reduce bundle size
   webpack: (config, { dev, isServer }) => {
     // Only run in production and for client-side builds
     if (!dev && !isServer) {
@@ -36,6 +30,12 @@ const config = {
     }
     
     return config;
+  },
+
+  // Properly configure static routes
+  experimental: {
+    // This helps with static export of App Router
+    appDocumentPreloading: false,
   },
 };
 
