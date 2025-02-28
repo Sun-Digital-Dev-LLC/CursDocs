@@ -35,7 +35,7 @@ export default async function Page(props: {
   );
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<Array<{ slug?: string[] }>> {
   return source.generateParams();
 }
 
