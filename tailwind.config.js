@@ -1,5 +1,3 @@
-import { createPreset } from 'fumadocs-ui/tailwind-plugin';
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -9,5 +7,9 @@ export default {
     './mdx-components.{ts,tsx}',
     './node_modules/fumadocs-ui/dist/**/*.js',
   ],
-  presets: [createPreset()],
+  // Removing the createPreset() import that's causing issues
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 };

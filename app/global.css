@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add Fumadocs UI default styles */
+:root {
+  --fd-foreground: theme('colors.gray.900');
+  --fd-background: theme('colors.white');
+  --fd-muted-foreground: theme('colors.gray.500');
+  --fd-muted: theme('colors.gray.100');
+  --fd-border: theme('colors.gray.200');
+  --fd-primary-foreground: theme('colors.white');
+  --fd-primary: theme('colors.blue.600');
+  --fd-ring: theme('colors.blue.200');
+  --fd-focus-ring: theme('colors.blue.100');
+}
+
+.dark {
+  --fd-foreground: theme('colors.gray.100');
+  --fd-background: theme('colors.gray.950');
+  --fd-muted-foreground: theme('colors.gray.400');
+  --fd-muted: theme('colors.gray.800');
+  --fd-border: theme('colors.gray.800');
+  --fd-primary-foreground: theme('colors.white');
+  --fd-primary: theme('colors.blue.500');
+  --fd-ring: theme('colors.blue.800');
+  --fd-focus-ring: theme('colors.blue.900');
+}

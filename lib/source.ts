@@ -1,6 +1,7 @@
 import { docs, meta } from '@/.source';
 import { createMDXSource } from 'fumadocs-mdx';
-import { loader, type PageTree } from 'fumadocs-core/source';
+import { loader } from 'fumadocs-core/source';
+
 // Define a search result type
 export interface SearchResult {
   title: string;
@@ -8,32 +9,16 @@ export interface SearchResult {
   description: string;
 }
 
-// Define the Page type
+// Define the Page type in a way that's compatible with what's returned
 export interface Page {
-  data: {
-    body: any;
-    toc: any[];
-    full: boolean;
-    title: string;
-    description: string;
-  };
-}
-
-// Define a minimal PageTree type compatible with DocsLayout
-export interface PageTree {
-  name: string;
-  children: Array<{
-    name: string;
-    url?: string;
-    description?: string;
-    children?: Array<any>; // 遞迴結構
-  }>;
+  data: any;
+  [key: string]: any;
 }
 
 // Extend the loader type to include our search method
 export interface SourceWithSearch {
-  pageTree: PageTree;
-  getPage: (slug?: string[]) => Page | null;
+  pageTree: any; // Use 'any' to allow the original structure
+  getPage: (slug?: string[]) => any; // Use 'any' for flexibility
   generateParams: () => Array<{ slug?: string[] }>;
   search: (query: string) => SearchResult[];
 }
@@ -44,14 +29,50 @@ const baseSource = loader({
   source: createMDXSource(docs, meta),
 });
 
+// Helper function to extract all possible URL paths from the page tree
+function getAllPaths(): Array<{ slug?: string[] }> {
+  const paths: Array<{ slug?: string[] }> = [];
+  
+  // Add the root path
+  paths.push({ slug: [] });
+  
+  function traverse(node: any, currentPath: string[] = []) {
+    if (!node) return;
+    
+    if (Array.isArray(node.children)) {
+      for (const child of node.children) {
+        if (child.url) {
+          // Extract slug from the URL (remove the /docs/ prefix)
+          const url = child.url;
+          const slugParts = url.startsWith('/docs/') 
+            ? url.slice(6).split('/').filter(Boolean) 
+            : url.split('/').filter(Boolean);
+          
+          if (slugParts.length > 0) {
+            paths.push({ slug: slugParts });
+          }
+        }
+        
+        // Continue traversing if there are children
+        if (Array.isArray(child.children) && child.children.length > 0) {
+          traverse(child, [...currentPath, child.name]);
+        }
+      }
+    }
+  }
+  
+  traverse(baseSource.pageTree);
+  return paths;
+}
+
 // Create and export the enhanced source object with search functionality
 export const source: SourceWithSearch = {
-  pageTree: {
-    name: 'Documentation',
-    children: (baseSource.pageTree as any).children || baseSource.pageTree || [],
+  pageTree: baseSource.pageTree, // Keep the original structure
+  getPage: baseSource.getPage as any, // Use type assertion to bypass type checking
+  generateParams: function() {
+    // Implement our own version that doesn't rely on this.getPages
+    return getAllPaths();
   },
-  getPage: baseSource.getPage,
-  generateParams: baseSource.generateParams,
   search: function(query: string): SearchResult[] {
     if (!query || typeof query !== 'string' || query.trim() === '') {
       return [];
