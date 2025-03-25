@@ -5,10 +5,11 @@
         "guide/terms-of-service",
         "guide/privacy-policy",
         "---控制面板教學---",
+        "panel-tutorial/setup_account",
         "panel-tutorial/startup",
         "panel-tutorial/settings",
         "panel-tutorial/activity",
         "---FiveM 伺服器設定教學---",
-        "fivem-tutorial/txadmin"
+        "fivem-tutorial/setup_fm_server"
     ]
 }
