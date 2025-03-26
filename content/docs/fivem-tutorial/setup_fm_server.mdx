@@ -1,0 +1,143 @@
+---
+title: 使用 txAdmin 建立新伺服器檔案
+description: 使用面板開啟 txAdmin 模式及建立全新 ESX 基礎檔案
+tags: fivem-tutorial
+---
+
+## 查看 Server 安裝成功信件
+首先，在 [客戶中心](https://store.curshosting.net/index.php/store/tw-fivem) 完成訂單後，**約 15 至 60 分鐘** 可以從 Gmail 查看是否收到寄件者為 **CursPanel** 有關 **Server Installed** 的信件，如下圖：
+<img src="https://imgur.com/WYCxqFQ.png" />
+
+之後我們可以前往 **控制面板 ([點我跳轉](https://panel.curshosting.net/))** 查看伺服器是否已安裝完成。
+<img src="https://imgur.com/ZCnDIrk.png" />
+
+## 設定伺服器相關參數
+我們先點選伺服器，在前往 **[Startup](/docs/panel-tutorial/startup)** 前往伺服器相關參數設定。
+<img src="https://imgur.com/4x3ogtW.png" />
+<img src="https://imgur.com/2rVBur4.png" />
+
+## 啟用 txAdmin 管理面板
+在 **[Startup](/docs/panel-tutorial/startup)** 設定中，找到以下選項並將其開啟：
+<img src="https://imgur.com/Xy5MIkF.png" />
+
+## 啟動伺服器
+填好以上資料後 可以點選 Terminal 並開啟伺服器。
+<img src="https://imgur.com/IkLV0vd.png" />
+
+啟動後會看到中間 Terminal 開始跳出文字，同時可以注意左上亮燈表示：
+<img src="https://imgur.com/pdih2H4.png" />
+
+### 指示燈顏色用意
+| 顏色 | 意思                  |
+| ---------- | --------------------- |
+| 🟢 綠色       | 伺服器正常運作中      |
+| 🟡 黃色       | 伺服器正在開啟/載入中 |
+| 🔴 紅色       | 伺服器關閉中          |
+
+成功開啟伺服器後，可以看到系統已提供相關 IP 及端口給我們進入 txAdmin，我們根據系統提供的網址進入即可開始進行設定。
+<img src="https://imgur.com/lb4oefI.png" />
+
+<Callout title="重要提示" type="warn">啟用 txAdmin 並不代表伺服器已成功啟動。此畫面僅表示 txAdmin 管理後台已開啟並運作中。</Callout>
+
+## 設定 txAdmin 管理面板
+成功進入 txAdmin 管理面板後會需要輸入 4 位 PIN 碼 **(只有首次啟用時需要)**。
+<Callout title="重要提示" type="info">4 位 PIN 碼可以在控制面板上的 Terminal 看到。</Callout>
+<img src="https://imgur.com/kNA2c9u.png" />
+<img src="https://imgur.com/DJSxLAR.png" />
+<img src="https://imgur.com/yL2zWgS.png" />
+
+PIN 碼輸入正確後，系統會要求使用 FiveM 帳號登入 **(如沒有帳號請自行註冊)**，並點選授權。
+<img src="https://imgur.com/csPyU9O.png" />
+
+### 為 txAdmin 帳號設定 Discord ID (選填)
+之後系統會要求您填寫 Discord ID 和密碼。要獲取 Discord ID，請在 Discord 中右鍵點擊您的帳戶，然後選擇 "Copy User ID"。
+<img src="https://imgur.com/JJJhzfC.png" />
+<img src="https://imgur.com/i29eiBq.png" />
+
+填好以上資料後 可點選 Register (完成註冊)。
+
+## 開始設定伺服器
+1. Server Name (請填寫你的伺服器名稱)
+<img src="https://imgur.com/OM9JyI8.png" />
+
+2. 設定伺服器檔案
+<img src="https://imgur.com/vSgZmRc.png" />
+
+| 選項 | 意思 |
+| -------- | -------- | 
+| Popular Recipes     | 指用官方提供的檔案架設(可選QB,ESX)     | 
+| Existing Server Data     | 指自行已有檔案 只需設定路徑便可使用     | 
+
+<Callout title="重要提示" type="warn">只說明較常遇到的方案</Callout>
+
+如果需要製作全新檔案，可以點選 **Popular Recipes**，如客戶已經有檔案，可跳過此教學繼續往下查看。
+這邊選擇伺服器核心系統選擇 **ESX Legacy**。
+<img src="https://imgur.com/MjDj5U0.png" />
+
+選擇完之後，系統會自動建立路徑。
+<img src="https://imgur.com/OJaUZwM.png" />
+
+我們建議更改為 `/home/container/resources`。
+<img src="https://imgur.com/kSfxCNy.png" />
+
+修改好之後按下 "Go to Recipe Deployer"。
+<img src="https://imgur.com/3Kt92LE.png" />
+
+3. 自行檔案進行設定
+路徑可以這樣設定為 `/home/container/resources` (大部分都是這樣的)
+<img src="https://imgur.com/kSfxCNy.png" />
+
+設置 `server.cfg` 的位置，系統會自行檢查。(正常是不需更改)
+<img src="https://imgur.com/dXn3fjM.png" />
+
+4. 伺服器設置
+這邊直接點選 Next。
+<img src="https://imgur.com/8OFxO7g.png" />
+
+這邊需要前面填入的 FiveM 伺服器金鑰 **[點選進行申請](https://keymaster.fivem.net)**，亦可在 **[控制面板](https://panel.curshosting.net)** 上的 Startup 進行 COPY。
+<img src="https://imgur.com/Z8yPeAB.png" />
+
+之後點選 **"Show/Hide Database options (advanced)"**。
+<img src="https://imgur.com/mIRxCEI.png" />
+
+這邊需要設置資料庫，這裡需要回到控制面板中的 **Database**，點選 **New Database**。
+<img src="https://imgur.com/LbzLi7X.png" />
+
+<img src="https://imgur.com/5UalgVu.png" />
+
+| 欄位 | 填寫內容 | 備註 |
+|---|---|---|
+| 第一格 | 伺服器名稱或個人喜好 |  |
+| 第二格 | % | % 代表所有 IP 可以連到這個資料庫 |
+| 第三步 | 點選 Create Database |  |
+
+以上步驟完成後，系統會創建一個 Database 出來，然後我們點選小眼睛。
+<img src="https://imgur.com/2jvjHNV.png" />
+
+<Callout title="重要提示" type="info">圖片左側的 `s13_curshosting` 為資料庫名稱，稍後填寫資料庫名稱會使用到。</Callout>
+
+點選小眼睛後顯示出 Database 的登入資料，詳細連線內容請看 **[Database](/docs/panel-tutorial/database)**。
+<img src="https://imgur.com/fuXxzQl.png" />
+
+可以根據以下填法，將正確的資料填回相關的位置。
+<img src="https://imgur.com/UJV1zEg.png" />
+
+之後點選 **Run Recipe** (系統會進行測試連結資料庫是否成功可以連線，如未能連線代表資料有錯誤，請重新填過或尋求客服人員協助)。
+系統會慢慢載入資料中...
+<img src="https://imgur.com/hynd1SB.png" />
+
+完成後 點選 Next。
+<img src="https://imgur.com/9ig2EUa.png" />
+
+先點選 **Save & Run Server**，如果要修改資料，請稍後再做修改。
+<img src="https://imgur.com/37MWlmy.png" />
+
+## 啟動伺服器
+當檔案都創建完畢後，系統會自動開啟伺服器。此時，您可以開啟 FiveM，並在伺服器列表中找到您的伺服器進行登入。
+
+<Callout title="重要提示" type="info">也可以在 FiveM 中按下 F8，輸入 `connect xx.xx.xx.xx:30120` 來進入伺服器 (請將 `xx.xx.xx.xx:30120` 替換成您伺服器的 IP 位址及端口)。</Callout>
+
+<img src="https://imgur.com/Cs7eluX.png" />
+
+## 注意事項
+- 如果您需要進一步支援，請隨時聯繫我們的客服團隊。

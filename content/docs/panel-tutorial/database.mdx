@@ -1,0 +1,47 @@
+---
+title: Database 設定
+description: 創建、設定、連線 Database (資料庫) 教學
+tags: Tutorial
+---
+
+## 創建 Database (資料庫)
+
+從 **[控制面板](https://panel.curshosting.net)** 上點選 Databases，再點選 **New Database**，創建範例如下：。
+
+<img src="https://imgur.com/LbzLi7X.png" />
+
+<img src="https://imgur.com/5UalgVu.png" />
+
+| 第一格               | 第二格                           | 第三步               |
+| -------------------- | -------------------------------- | -------------------- |
+| 伺服器名稱或個人喜好 | %                                | 點選 Create Database |
+|                      | % 代表所有 IP 可以連到這個資料庫 |                      |
+
+以上步驟完成後，系統會創建一個 Database 出來，然後我們點選小眼睛。
+
+<img src="https://imgur.com/2jvjHNV.png" />
+
+## Databases 連線資訊
+
+<img src="https://imgur.com/fuXxzQl.png" />
+
+| 名稱                    | 用途                                                           |
+| ----------------------- | -------------------------------------------------------------- |
+| ENDPOINT                | 這邊是顯示資料庫 IP 及 Port                                    |
+| CONNECTIONS FROM        | 這邊是指可授權連線的地方，% 代表所有人都可以透過這個 IP 連線到 |
+| USERNAME                | 資料庫用戶名稱                                                 |
+| PASSWORD                | 資料庫用戶密碼                                                 |
+| JDBC CONNECTIONS STRING | 使用 Microsoft JDBC Driver for SQL Server 建置連線的 URL       |
+
+## 使用 HeidiSQL 連線進入資料庫
+
+我們需要先開啟 HeidiSQL，然後從控制面板上選擇要連線的 Database，點選 **小眼睛** 去獲得連線資訊。如連線 IP、Port、使用者帳號及密碼，再將連線 IP、使用者帳號及密碼填上 (可參考以下圖片及作參考)。
+<Callout title="重要提示" type="info">CursHosting 所使用的 Database 系統為 MariaDB，連線登入時請注意！</Callout>
+
+<img src="https://imgur.com/615PEVE.png" />
+
+這樣就成功完成連線了。
+
+## 注意事項
+
+- 如果您無法連線或需要進一步支援，請隨時聯繫我們的客服團隊。
