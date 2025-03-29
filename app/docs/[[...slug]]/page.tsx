@@ -9,6 +9,9 @@ import {
 import { notFound } from "next/navigation";
 import { ImageZoom } from "fumadocs-ui/components/image-zoom";
 import defaultMdxComponents from "fumadocs-ui/mdx";
+import { Card, Cards } from 'fumadocs-ui/components/card';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { HomeIcon, IdCard, UsersRound, ChartColumnIncreasing } from 'lucide-react';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -18,7 +21,7 @@ export default async function Page(props: {
   if (!page) notFound();
 
   const MDX = page.data.body;
-
+  
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
       <DocsTitle>{page.data.title}</DocsTitle>
@@ -28,6 +31,14 @@ export default async function Page(props: {
           components={{
             ...defaultMdxComponents,
             img: (props) => <ImageZoom {...(props as any)} />,
+            Card,
+            Cards,
+            Step,
+            Steps,
+            HomeIcon,
+            IdCard,
+            UsersRound,
+            ChartColumnIncreasing,
           }}
         />
       </DocsBody>

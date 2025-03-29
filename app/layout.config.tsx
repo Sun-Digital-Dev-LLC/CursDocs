@@ -1,4 +1,5 @@
-import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import Image from "next/image";
 
 /**
  * Shared layout configurations
@@ -9,13 +10,21 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
  */
 export const baseOptions: BaseLayoutProps = {
   nav: {
-    title: 'CursHosting Docs',
+    title: (
+      <Image
+        src="/Curs_Docs.png"
+        alt="CursHosting Banner"
+        width={170} 
+        height={40} 
+        priority
+      />
+    ),
   },
   links: [
     {
-      text: '教學文檔',
-      url: '/docs',
-      active: 'nested-url',
+      text: "教學文檔",
+      url: "/docs",
+      active: "nested-url",
     },
   ],
 };
