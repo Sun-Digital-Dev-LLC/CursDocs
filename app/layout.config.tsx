@@ -12,7 +12,7 @@ export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
       <Image
-        src="/Curs_Docs.png"
+        src="https://cdn.curshosting.net/Curs_docs_banner.svg"
         alt="CursHosting Banner"
         width={170} 
         height={40} 
