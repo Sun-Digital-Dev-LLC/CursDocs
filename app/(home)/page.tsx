@@ -6,7 +6,7 @@ export default function HomePage() {
     <main className="flex flex-1 flex-col items-center justify-center px-4">
       <div className="w-full max-w-md mb-8 text-center">
       <Image 
-        src="/CursHosting_banner.png" 
+        src="https://cdn.curshosting.net/Curs_new_banner_wb.svg" 
         alt="CursHosting Banner" 
         className="mx-auto"
         width={500}
