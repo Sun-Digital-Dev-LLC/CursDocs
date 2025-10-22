@@ -11,6 +11,7 @@ import { ImageZoom } from "fumadocs-ui/components/image-zoom";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import { Card, Cards } from 'fumadocs-ui/components/card';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { TypeTable } from 'fumadocs-ui/components/type-table';
 import { HomeIcon, IdCard, UsersRound, ChartColumnIncreasing } from 'lucide-react';
 
 export default async function Page(props: {
@@ -35,6 +36,7 @@ export default async function Page(props: {
             Cards,
             Step,
             Steps,
+            TypeTable,
             HomeIcon,
             IdCard,
             UsersRound,
