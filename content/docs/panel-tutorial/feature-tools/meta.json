@@ -4,6 +4,7 @@
         "aisearch",
         "database_online_manage",
         "database_backup",
-        "translation_file"
+        "translation_file",
+        "fivem_fxserver_build"
     ]
 }
