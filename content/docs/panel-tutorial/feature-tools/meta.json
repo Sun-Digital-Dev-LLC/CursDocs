@@ -2,6 +2,7 @@
     "title": "特色功能",
     "pages": [
         "aisearch",
-        "database_online_manage"
+        "database_online_manage",
+        "database_backup"
     ]
 }
