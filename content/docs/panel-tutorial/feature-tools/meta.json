@@ -3,6 +3,7 @@
     "pages": [
         "aisearch",
         "database_online_manage",
-        "database_backup"
+        "database_backup",
+        "translation_file"
     ]
 }
