@@ -1,0 +1,19 @@
+---
+title: 設定資源快取伺服器
+description: 減少玩家重複載入大量資源，消耗主機流量。
+tags: cache, server, 快取伺服器, 快取, 教學
+---
+
+<Callout title="重要提醒" type="info">
+  如果在客戶中心加購 **FiveM 資源快取服務**，請開啟客服單向我們拿取必要設定的參數。
+</Callout>
+
+## 設定快取伺服器
+拿到設定的參數後請打開 `server.cfg` 輸入以下這兩行資料。
+
+```cfg
+fileserver_add ".*" "貼上拿到的資源網址"
+adhesive_cdnKey "貼上拿到的 CDN KEY"
+```
+
+設定完成後就可開啟伺服器囉！

@@ -16,6 +16,7 @@
         "panel-tutorial/activity",
         "---FiveM 設定教學---",
         "fivem-tutorial/setup_fm_server",
-        "fivem-tutorial/fix-ddos-exploit"
+        "fivem-tutorial/fix-ddos-exploit",
+        "fivem-tutorial/setup_cache_server"
     ]
 }
