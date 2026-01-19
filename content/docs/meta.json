@@ -14,9 +14,15 @@
         "panel-tutorial/startup",
         "panel-tutorial/settings",
         "panel-tutorial/activity",
+        "panel-tutorial/raidrive-connect-sftp",
         "---FiveM 設定教學---",
         "fivem-tutorial/setup_fm_server",
         "fivem-tutorial/fix-ddos-exploit",
-        "fivem-tutorial/setup_cache_server"
+        "fivem-tutorial/setup_cache_server",
+        "---Hytale 伺服器安裝教學---",
+        "hytale-tutorial/setup-hytale-server",
+        "---問題排解---",
+        "issues/network-connect",
+        "issues/server-core-restore"
     ]
 }

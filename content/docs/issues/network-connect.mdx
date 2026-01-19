@@ -1,0 +1,52 @@
+---
+title: 主機連線障礙自檢
+tags: Troubleshooting
+---
+
+若您遇到主機連不上線或連線到一半顯示連線錯誤時，以下步驟可將您的連接狀態提交給我們與路由廠商進行調整。
+
+## 使用 Cloudflare Warp 測試
+
+若發現沒辦法連線的使用者，請下載 [Cloudflare Warp](https://one.one.one.one/)。
+
+<img src="https://cdn.curshosting.net/ConnectError/ce-07.webp" />
+
+將其開啟後，再次進行連線看看。
+
+<img src="https://cdn.curshosting.net/ConnectError/ce-08.webp" />
+<img src="https://cdn.curshosting.net/ConnectError/ce-09.webp" />
+
+以上是短暫的解決辦法，若您開啟後還是無法連線，請繼續往下看。
+
+## Windows 如何自檢？
+
+若您是 Windows 系統使用者，請下載 [WinMTR](https://winmtr.net/)。
+
+<img src="https://cdn.curshosting.net/ConnectError/ce-01.webp" />
+
+下載完打開後，在 **Host** 的部分輸入您要連線的主機或伺服器 IP，接著按下 **Start** 讓 MTR 跑 10~15 秒。
+
+<img src="https://cdn.curshosting.net/ConnectError/ce-02.webp" />
+
+接著按下 **Copy Text to clipboard** 將 MTR 的結果複製，稍後會需要用到。
+
+<img src="https://cdn.curshosting.net/ConnectError/ce-03.webp" />
+
+## Linux/Mac 如何自檢？
+
+在 Terminal 輸入 `sudo mtr -4 <目標 IP>`。
+
+<img src="https://cdn.curshosting.net/ConnectError/ce-04.webp" />
+
+同樣讓 MTR 跑 10~15 秒後，將結果複製起來。
+
+<img src="https://cdn.curshosting.net/ConnectError/ce-05.webp" />
+
+
+再來需要前往 [What is my ip](https://whatismyipaddress.com/) 將您的 IP 及 ISP (網路服務提供廠商) 進行複製或截圖。
+
+<img src="https://cdn.curshosting.net/ConnectError/ce-06.webp" />
+
+之後前往 Discord 開啟客服單將 MTR 結果及您的IP、ISP 廠商貼上給我們，我們會盡快與路由廠商聯絡及調整。
+
+<img src="https://cdn.curshosting.net/ConnectError/ce-10.webp" />
