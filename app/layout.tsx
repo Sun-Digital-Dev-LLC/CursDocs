@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://docs.curshosting.net/docs'),
+  metadataBase: new URL('https://docs.curshosting.net'),
   title: {
     default: 'CursHosting 教學文檔',
     template: '%s | CursHosting Docs',
