@@ -9,10 +9,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'CursHosting 教學文檔',
+  metadataBase: new URL('https://docs.curshosting.net/docs'),
+  title: {
+    default: 'CursHosting 教學文檔',
+    template: '%s | CursHosting Docs',
+  },
   description: '了解如何使用 CursHosting 的所有功能',
   icons: {
     icon: './favicon.ico'
+  },
+  openGraph: {
+    title: 'CursHosting 教學文檔',
+    description: '了解如何使用 CursHosting 的所有功能',
+    type: 'website',
+    locale: 'zh_TW',
+    siteName: 'CursHosting Docs',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CursHosting 教學文檔',
+    description: '了解如何使用 CursHosting 的所有功能',
   },
 };
 

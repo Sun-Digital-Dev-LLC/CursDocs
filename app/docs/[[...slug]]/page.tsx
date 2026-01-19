@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { source } from "@/lib/source";
+import { source, getPageImage } from "@/lib/source";
 import {
   DocsPage,
   DocsBody,
@@ -59,8 +59,31 @@ export async function generateMetadata(props: {
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
+  const image = getPageImage(page);
+
   return {
     title: page.data.title,
     description: page.data.description,
+    openGraph: {
+      title: page.data.title,
+      description: page.data.description,
+      type: 'article',
+      url: page.url,
+      images: [
+        {
+          url: image.url,
+          width: 1200,
+          height: 630,
+          alt: page.data.title,
+        },
+      ],
+      siteName: 'CursHosting Docs',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: page.data.title,
+      description: page.data.description,
+      images: [image.url],
+    },
   };
 }

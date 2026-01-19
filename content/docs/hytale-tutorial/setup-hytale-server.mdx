@@ -1,0 +1,44 @@
+---
+title: 伺服器安裝
+tags: Hytale, tutorial, server, install, setup, 伺服器, 安裝, 搶先體驗
+---
+<Callout title="重要提醒" type="warn">Hytale 目前還在 **搶先體驗** 階段，伺服器仍可能遇到不穩定及檔案因更新而遺失，請架設伺服器的服主注意！</Callout>
+
+## 進行伺服器安裝
+
+當您購買完 Hytale 伺服器方案後，等待系統通知您可進行設定時，請進入控制面板進行設定動作。
+
+首次架設需要您手動進行驗證才能正確的下載 Hytale 伺服器檔案。
+
+<img src="https://cdn.curshosting.net/HytaleServerInstall/hy-01.webp" />
+<img src="https://cdn.curshosting.net/HytaleServerInstall/hy-02.webp" />
+
+驗證成功後會開始下載伺服器檔案。下載完後，需要您進行伺服器 Token 驗證。
+
+<img src="https://cdn.curshosting.net/HytaleServerInstall/hy-03.webp" />
+
+我們建議使用 `/auth login device` 來進行 Token 驗證。
+
+<img src="https://cdn.curshosting.net/HytaleServerInstall/hy-04.webp" />
+
+點選伺服器給的連結進行驗證。
+
+<img src="https://cdn.curshosting.net/HytaleServerInstall/hy-05.webp" />
+<img src="https://cdn.curshosting.net/HytaleServerInstall/hy-06.webp" />
+
+驗證成功後伺服器會告知您剛剛驗證並不是永久性的，重啟後就需要再次驗證，若需要永久驗證需要輸入 `/auth persistence` 指令進行永久儲存 Token。
+
+<img src="https://cdn.curshosting.net/HytaleServerInstall/hy-07.webp" />
+
+這裡我們建議輸入 `/auth persistence Encrypted` 使用加密方式儲存。
+
+<img src="https://cdn.curshosting.net/HytaleServerInstall/hy-08.webp" />
+
+儲存成功後前往檔案管理即可看到 `auth.enc` 接下來重新啟動伺服器後就會自動抓取 Token，就無須重新登入驗證。
+
+<img src="https://cdn.curshosting.net/HytaleServerInstall/hy-09.webp" />
+<img src="https://cdn.curshosting.net/HytaleServerInstall/hy-10.webp" />
+
+接下來就可以開始加入模組來搭建您的 Hytale 伺服器囉！
+
+以上是 Hytale 伺服器安裝完整教學。如果在操作過程中有任何疑問，歡迎隨時至 Discord 聯絡我們！
