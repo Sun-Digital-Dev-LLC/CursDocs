@@ -39,40 +39,16 @@ export async function GET(
             marginBottom: '40px',
           }}
         >
-          <div
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://cdn.curshosting.net/Curs_docs_banner.svg"
+            alt="CursHosting Docs"
+            width={320}
+            height={76}
             style={{
-              width: '48px',
-              height: '48px',
-              borderRadius: '12px',
-              backgroundColor: '#3b82f6',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginRight: '16px',
+              objectFit: 'contain',
             }}
-          >
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
-            </svg>
-          </div>
-          <span
-            style={{
-              fontSize: '28px',
-              fontWeight: 600,
-              color: '#ffffff',
-            }}
-          >
-            CursHosting Docs
-          </span>
+          />
         </div>
 
         {/* Title */}
